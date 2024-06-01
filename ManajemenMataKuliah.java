@@ -19,9 +19,22 @@ public void addMataKuliahTail(MataKuliah mataKuliah) {
         mataKuliahList.add(mataKuliah);
     }
 
-    /* Bagian Bima
-  Fungsi Letakan Disini
-  Akhir Bagian Bima */
+    // Bagian Bima
+    public void addMataKuliahMid(int index, MataKuliah mataKuliah) {
+        if (index >= 0 && index <= mataKuliahList.size()) {
+            mataKuliahList.add(index, mataKuliah);
+        } else {
+            System.out.println("Indeks di luar jangkauan");
+        }
+    }
+
+    public void removeMataKuliahHead() {
+        if (!mataKuliahList.isEmpty()) {
+            mataKuliahList.remove(0);
+        } else {
+            System.out.println("Daftar mata kuliah kosong");
+        }
+    }
 
 
     public void removeMataKuliahTail() {
@@ -39,12 +52,38 @@ public void addMataKuliahTail(MataKuliah mataKuliah) {
             System.out.println("Indeks di luar jangkauan");
         }
     }
-/* Bagian Azis
-  Fungsi Letakan Disini
-  Akhir Bagian Azis */
+// Bagian Azis
+    public MataKuliah searchMataKuliah(String kode) {
+        for (MataKuliah mataKuliah : mataKuliahList) {
+            if (mataKuliah.getKode().equals(kode)) {
+                return mataKuliah;
+            }
+        }
+        return null;
+    }
 
-/* Bagian Aldi
-  Fungsi Letakan Disini
-  Akhir Bagian Azis */
-//MASUKAN FUNGSINYA DIATAS INI.
+    public void updateMataKuliah(String kode, String nama, int sks) {
+        MataKuliah mataKuliah = searchMataKuliah(kode);
+        if (mataKuliah != null) {
+            mataKuliah.setNama(nama);
+            mataKuliah.setSks(sks);
+        } else {
+            System.out.println("Mata kuliah tidak ditemukan");
+        }
+    }
+
+// Bagian Aldi
+    public void displayMataKuliah() {
+        if (mataKuliahList.isEmpty()) {
+            System.out.println("Daftar mata kuliah kosong");
+        } else {
+            for (MataKuliah mataKuliah : mataKuliahList) {
+                System.out.println(mataKuliah);
+            }
+        }
+    }
+
+    public int size() {
+        return mataKuliahList.size();
+    }
 }

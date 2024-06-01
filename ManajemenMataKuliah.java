@@ -54,7 +54,24 @@ public void addMataKuliahTail(MataKuliah mataKuliah) {
     }
 // Bagian Azis
 
+public MataKuliah searchMataKuliah(String kode) {
+        for (MataKuliah mataKuliah : mataKuliahList) {
+            if (mataKuliah.getKode().equals(kode)) {
+                return mataKuliah;
+            }
+        }
+        return null;
+    }
 
+    public void updateMataKuliah(String kode, String nama, int sks) {
+        MataKuliah mataKuliah = searchMataKuliah(kode);
+        if (mataKuliah != null) {
+            mataKuliah.setNama(nama);
+            mataKuliah.setSks(sks);
+        } else {
+            System.out.println("Mata kuliah tidak ditemukan");
+        }
+    }
 // Bagian Aldi
 
 }
